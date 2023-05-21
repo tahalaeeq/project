@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  pullrequest:
+  pull_request:
     branches:
       - main
 
@@ -12,7 +12,6 @@ jobs:
   testing:
     runs-on: ubuntu-latest
     steps:
-        # name: copy code from github repo to ubuntu VM machine
       - name: Step1-Checkout Repository to Ubuntu Runner
         uses: actions/checkout@v3
 
@@ -21,11 +20,11 @@ jobs:
         with:
           node-version: 16
 
-      -name: Step3-Installing Dependencies
-       run: npm ci
+      - name: Step3-Installing Dependencies
+        run: npm ci
 
-      -name: Step4-Run Prettier
-       run: npx prettier --check "**/*.{html,css,js}"
+      - name: Step4-Run Prettier
+        run: npx prettier --check "**/*.{html,css,js}"
 
-      -name: Step4-Run htmlhint
-       run: npx htmlhint "**/*.html"       
+      - name: Step4-Run htmlhint
+        run: npx htmlhint "**/*.html"
